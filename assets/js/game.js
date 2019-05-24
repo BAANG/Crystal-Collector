@@ -10,7 +10,9 @@ var customerText = [ //array of customer dialogues
     "'Gimme something that'll make me pass out yesterday! Here's $" + cpuCount + "'",
     "'I only have $" + cpuCount + " how many alcohols can I get with that?'",
     "'Gimme the works!' Your customer hands you a crumpled up wad of singles worth $" + cpuCount + " Better spit in his drink.",
-    "'Can I have a water!?' This man clearly needs it because he handed you $" + cpuCount + " for something that's free. Make him something worth his money."
+    "'Can I have a water!?' This man clearly needs it because he handed you $" + cpuCount + " for something that's free. Make him something worth his money.",
+    "'It's my 21st birthday! How much alcohol is this?' They hand you $" + cpuCount + ".",
+    "'SHOTS ALL AROUND!' Your customer hands you their credit card and tells that they only have $" + cpuCount + "left until they overdraft..."
 ]
 
 $(document).ready(function() { //on document load...
