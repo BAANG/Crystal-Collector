@@ -17,6 +17,7 @@ $(document).ready(function() { //on document load...
 var i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
     
     $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
+    $("#cpuCount").text("$" + cpuCount)
 });
 
 
@@ -36,4 +37,6 @@ var drink3 = (Math.floor(Math.random() * 5 + 6 )); // one drink is always 6-10
     // console.log(drink3 + " is 6-10")
 var drink4 = (Math.floor(Math.random() * 5 + 11)); // one drink is always 11-15
     // console.log(drink4 + " is 11-15")
+var drink5 = (Math.floor(Math.random() * 5 + 16)); // one drink is always 16-20
+
 var drinkArray = [drink1, drink2, drink3, drink4]; // array that stores the values of each of the four drinks
