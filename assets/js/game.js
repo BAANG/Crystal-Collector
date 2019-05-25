@@ -1,3 +1,4 @@
+$(document).ready(function() {
 // Define starting variables for game
 
 var wins = 0;
@@ -17,7 +18,8 @@ var drink3
 var drink4
 var drink5
 var drinkArray = [drink2, drink3, drink4, drink5]; // array that stores the values of each of the four drinks
-var randomArray = [];
+var playerCount = 0;
+
 
 
 
@@ -44,7 +46,7 @@ var rollDrinks = function() {  // function to reroll random values of drinks
  } // end reroll drinks functions
 
 
- var randomBtns = function(array){ //function to randomize placement of values on buttons
+ var randomBtns = function(array){ //function to randomize index of drinkArray
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
@@ -61,8 +63,16 @@ var rollDrinks = function() {  // function to reroll random values of drinks
         }
 
         return array;
-}
+} // end function
 
+resetGame = function() { //game reset function...
+    i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
+    rollCount(); //chooses random target number
+    rollDrinks();
+
+
+    $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
+} // end function
 
 var customerText = [ //array of customer dialogues
     "'Gimme something that'll make me pass out yesterday! Here's $" + cpuCount + "'",
@@ -73,24 +83,37 @@ var customerText = [ //array of customer dialogues
     "'SHOTS ALL AROUND!' Your customer hands you their credit card and tells that they only have $" + cpuCount + "left until they overdraft..."
 ]
 
-$(document).ready(function() { //on document load... [SET ALL VALUES FOR GAME START]
-    //load variables
-    var i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
-    rollCount();
-    rollDrinks();
-    $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
-    $("#cpuCount").text("$" + cpuCount)
+//BEGINNING GAME STATE
+var i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
+rollCount();
+rollDrinks();
+$("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
+$("#cpuCount").text("$" + cpuCount)
+
+$("#drink1").on("click", function(){
+    playerCount += 1
+    $("#playerCount").text("$" + playerCount)
+})
+$("#drink2").on("click", function(){
+    playerCount += drinkArray[0]
+    $("#playerCount").text("$" + playerCount)
+})
+$("#drink3").on("click", function(){
+    playerCount += drinkArray[1]
+    $("#playerCount").text("$" + playerCount)
+})
+$("#drink4").on("click", function(){
+    playerCount += drinkArray[2]
+    $("#playerCount").text("$" + playerCount)
+})
+$("#drink5").on("click", function(){
+    playerCount += drinkArray[3]
+    $("#playerCount").text("$" + playerCount)
+})
 
     
 
 });
 
 
-resetGame = function() { //on game reset...
-    i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
-    rollCount(); //chooses random target number
-
-
-    $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
-}
 
