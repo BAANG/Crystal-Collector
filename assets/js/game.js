@@ -9,6 +9,7 @@ var cpuCount = (Math.floor(Math.random() * 51 + 10)); // variable for tracking c
 
 var rollCount = function (){ //rerolls cpuCount value
     cpuCount = (Math.floor(Math.random() * 51 + 10));
+    $("#cpuCount").text("$" + cpuCount)
 }
     
 var drink1 = 1; // one drink is always valued at 1
@@ -42,6 +43,8 @@ var rollDrinks = function() {  // function to reroll random values of drinks
         $("#drink4").attr("value", drinkArray[2])
         $("#drink5").attr("value", drinkArray[3])
 
+        playerCount = 0;
+
         console.log(drinkArray[0], drinkArray[1], drinkArray[2], drinkArray[3])
  } // end reroll drinks functions
 
@@ -69,9 +72,9 @@ resetGame = function() { //game reset function...
     i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
     rollCount(); //chooses random target number
     rollDrinks();
-
-
     $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
+
+
 } // end function
 
 var customerText = [ //array of customer dialogues
@@ -111,9 +114,17 @@ $("#drink5").on("click", function(){
     $("#playerCount").text("$" + playerCount)
 })
 
-    
-
+$(".button").on("click", function() {
+    if (playerCount === cpuCount) {
+        resetGame();
+        wins++;
+    } else if (playerCount > cpuCount)  {
+        resetGame();
+        losses++;
+        }
+    })
 });
 
+//TO-DO: Check and fix reset game functionality. (Reprint correct values, mostly)
 
 
