@@ -16,6 +16,7 @@ var drink2
 var drink3
 var drink4
 var drink5
+var drinkArray = [drink2, drink3, drink4, drink5]; // array that stores the values of each of the four drinks
 
 
 // functions to reroll random values of drinks
@@ -25,13 +26,16 @@ var rollDrinks = function() {
     // console.log(drink2 + " is 2-5");
     drink3 = (Math.floor(Math.random() * 5 + 6 )); // one drink is always 6-10
     // console.log(drink3 + " is 6-10")
-    (Math.floor(Math.random() * 5 + 11)); // one drink is always 11-15
+    drink4 = (Math.floor(Math.random() * 5 + 11)); // one drink is always 11-15
     // console.log(drink4 + " is 11-15")
-    (Math.floor(Math.random() * 5 + 16)); // one drink is always 16-20
+    drink5 = (Math.floor(Math.random() * 5 + 16)); // one drink is always 16-20
     // console.log(drink5 + " is 16-20")
+        $("#drink2").attr("value", drinkArray[0])
+        $("#drink3").attr("value", drinkArray[1])
+        $("#drink4").attr("value", drinkArray[2])
+        $("#drink5").attr("value", drinkArray[3])
  } 
 
-var drinkArray = [drink2, drink3, drink4, drink5]; // array that stores the values of each of the four drinks
 
 var customerText = [ //array of customer dialogues
     "'Gimme something that'll make me pass out yesterday! Here's $" + cpuCount + "'",
@@ -42,18 +46,15 @@ var customerText = [ //array of customer dialogues
     "'SHOTS ALL AROUND!' Your customer hands you their credit card and tells that they only have $" + cpuCount + "left until they overdraft..."
 ]
 
-var setDrinkValues = function(){
-    $("#drink2").attr("value", drinkArray[0])
-    $("#drink3").attr("value", drinkArray[1])
-    $("#drink4").attr("value", drinkArray[2])
-    $("#drink5").attr("value", drinkArray[3])
-}   
-
 $(document).ready(function() { //on document load... [SET ALL VALUES FOR GAME START]
+    //load variables
     var i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
-
-        $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
-        $("#cpuCount").text("$" + cpuCount)
+    rollDrinks();
+    setDrinkValues();
+   
+   
+    $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
+    $("#cpuCount").text("$" + cpuCount)
 
 
     
