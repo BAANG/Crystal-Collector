@@ -5,6 +5,10 @@ var losses = 0;
 var playerCount = 0; // variable for tracking player's current count
 var cpuCount = (Math.floor(Math.random() * 41 + 10)); // variable for tracking cpu's random number (10-50)
     // console.log(cpuCount + " is the cpuCount")
+
+var rollCount = function (){
+    cpuCount = (Math.floor(Math.random() * 41 + 10));
+}
     
 var drink1 = 1; // one drink is always valued at 1
 // console.log(drink1 + " is always 1");
@@ -49,7 +53,7 @@ var setDrinkValues = function(){
     $("#drink5").attr("value", drinkArray[3])
 }   
 
-$(document).ready(function() { //on document load...
+$(document).ready(function() { //on document load... [SET ALL VALUES FOR GAME START]
     var i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
 
         $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
