@@ -3,11 +3,11 @@
 var wins = 0;
 var losses = 0;
 var playerCount = 0; // variable for tracking player's current count
-var cpuCount = (Math.floor(Math.random() * 41 + 10)); // variable for tracking cpu's random number (10-50)
+var cpuCount = (Math.floor(Math.random() * 51 + 10)); // variable for tracking cpu's random number (10-60)
     // console.log(cpuCount + " is the cpuCount")
 
 var rollCount = function (){ //rerolls cpuCount value
-    cpuCount = (Math.floor(Math.random() * 41 + 10));
+    cpuCount = (Math.floor(Math.random() * 51 + 10));
 }
     
 var drink1 = 1; // one drink is always valued at 1
@@ -17,11 +17,11 @@ var drink3
 var drink4
 var drink5
 var drinkArray = [drink2, drink3, drink4, drink5]; // array that stores the values of each of the four drinks
+var randomArray = [];
 
 
-// functions to reroll random values of drinks
 
-var rollDrinks = function() { 
+var rollDrinks = function() {  // function to reroll random values of drinks 
     drink2 = (Math.floor(Math.random() * 4 + 2 )); // one drink is always valued between 2-5
     // console.log(drink2 + " is 2-5");
     drink3 = (Math.floor(Math.random() * 5 + 6 )); // one drink is always 6-10
@@ -30,11 +30,38 @@ var rollDrinks = function() {
     // console.log(drink4 + " is 11-15")
     drink5 = (Math.floor(Math.random() * 5 + 16)); // one drink is always 16-20
     // console.log(drink5 + " is 16-20")
+
+    drinkArray = [drink2, drink3, drink4, drink5];
+
+    randomBtns(drinkArray);
+
         $("#drink2").attr("value", drinkArray[0])
         $("#drink3").attr("value", drinkArray[1])
         $("#drink4").attr("value", drinkArray[2])
         $("#drink5").attr("value", drinkArray[3])
- } 
+
+        console.log(drinkArray[0], drinkArray[1], drinkArray[2], drinkArray[3])
+ } // end reroll drinks functions
+
+
+ var randomBtns = function(array){ //function to randomize placement of values on buttons
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+}
 
 
 var customerText = [ //array of customer dialogues
@@ -49,13 +76,10 @@ var customerText = [ //array of customer dialogues
 $(document).ready(function() { //on document load... [SET ALL VALUES FOR GAME START]
     //load variables
     var i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
+    rollCount();
     rollDrinks();
-    setDrinkValues();
-   
-   
     $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
     $("#cpuCount").text("$" + cpuCount)
-
 
     
 
