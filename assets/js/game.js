@@ -4,12 +4,13 @@ $(document).ready(function() {
 var wins = 0;
 var losses = 0;
 var playerCount = 0; // variable for tracking player's current count
-var cpuCount = (Math.floor(Math.random() * 51 + 10)); // variable for tracking cpu's random number (10-60)
+var cpuCount = (Math.floor(Math.random() * 51 + 20)); // variable for tracking cpu's random number (20-70) | also sets the first count when starting game.
     // console.log(cpuCount + " is the cpuCount")
 
 var rollCount = function (){ //rerolls cpuCount value
-    cpuCount = (Math.floor(Math.random() * 51 + 10));
+    cpuCount = (Math.floor(Math.random() * 51 + 20)); // variable for tracking cpu's random number (20-70)
     $("#cpuCount").text("$" + cpuCount)
+    $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
 }
     
 var drink1 = 1; // one drink is always valued at 1
@@ -19,12 +20,10 @@ var drink3
 var drink4
 var drink5
 var drinkArray = [drink2, drink3, drink4, drink5]; // array that stores the values of each of the four drinks
-var playerCount = 0;
 
 
 
-
-var rollDrinks = function() {  // function to reroll random values of drinks 
+var rollDrinks = function() {  // function to reroll random values of drinks and shuffle array
     drink2 = (Math.floor(Math.random() * 4 + 2 )); // one drink is always valued between 2-5
     // console.log(drink2 + " is 2-5");
     drink3 = (Math.floor(Math.random() * 5 + 6 )); // one drink is always 6-10
@@ -49,7 +48,7 @@ var rollDrinks = function() {  // function to reroll random values of drinks
  } // end reroll drinks functions
 
 
- var randomBtns = function(array){ //function to randomize index of drinkArray
+var randomBtns = function(array) { //function to randomize index of drinkArray
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
@@ -66,32 +65,42 @@ var rollDrinks = function() {  // function to reroll random values of drinks
         }
 
         return array;
-} // end function
+    } // end function
+    
+    var customerText = [ //array of customer dialogues
+        "Gimme something that'll make me pass out yesterday!",
+        "How many alcohols can I get with that?'",
+        "'Gimme the works!' Your customer hands you a crumpled up wad of singles...",
+        "'Can I have a water!?' This man clearly needs it because he paid you for water. Make him something worth his money.",
+        "It's my 21st birthday! How much alcohol is this?",
+        "SHOTS FOR THE WHOLE BAR!",
+        "First round's on me.",
+        "Do you know how to make an Jameson & ginger ale?",
+        "Make me your best drink!",
+        "Can I get AMFs for me and all of my friends?!",
+        "Can you make me something pretty for my Instagram page?",
+        "Can I have your special?"
+    ]
 
 resetGame = function() { //game reset function...
     i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
-    rollCount(); //chooses random target number
+    rollCount(); //chooses random target number & prints new count
     rollDrinks();
-    $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
+    $("#playerCount").text("$0")
+
+    console.log(cpuCount)
 
 
 } // end function
 
-var customerText = [ //array of customer dialogues
-    "'Gimme something that'll make me pass out yesterday! Here's $" + cpuCount + "'",
-    "'I only have $" + cpuCount + " how many alcohols can I get with that?'",
-    "'Gimme the works!' Your customer hands you a crumpled up wad of singles worth $" + cpuCount + " Better spit in his drink.",
-    "'Can I have a water!?' This man clearly needs it because he handed you $" + cpuCount + " for something that's free. Make him something worth his money.",
-    "'It's my 21st birthday! How much alcohol is this?' They hand you $" + cpuCount + ".",
-    "'SHOTS ALL AROUND!' Your customer hands you their credit card and tells that they only have $" + cpuCount + "left until they overdraft..."
-]
 
 //BEGINNING GAME STATE
 var i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
-rollCount();
 rollDrinks();
-$("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
 $("#cpuCount").text("$" + cpuCount)
+$("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
+console.log(cpuCount + " is correct")
+
 
 $("#drink1").on("click", function(){
     playerCount += 1
@@ -118,9 +127,11 @@ $(".button").on("click", function() {
     if (playerCount === cpuCount) {
         resetGame();
         wins++;
+        $("#wins").text(wins)
     } else if (playerCount > cpuCount)  {
         resetGame();
         losses++;
+        $("#losses").text(losses)
         }
     })
 });
