@@ -5,6 +5,8 @@
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
+    -webkit-animation: spin 2s infinite;
+    animation: spin 2s infinite;
 }
 
 .button:hover {
@@ -25,4 +27,27 @@ audio {
     position: absolute;
     top: 10px;
     left: 10px;
+}
+
+@-moz-keyframes spin {
+    0% { -moz-transform: rotate(0deg); }
+    25% { -moz-transform: rotate(18deg); }
+    50% {  -moz-transform: rotate(-18deg); }
+    75% {  -moz-transform: rotate(18deg); }
+    100% { -moz-transform: rotate(0deg); }
+    
+}
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    25% { -webkit-transform: rotate(18deg); }
+    50% {  -webkit-transform: rotate(-18deg); }
+    75% {  -webkit-transform: rotate(18deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+@keyframes spin {
+    0% {transform:rotate(0deg);}
+    25% {transform:rotate(18deg);}
+    50% {transform:rotate(-18deg);}
+    75% {transform:rotate(18deg);}
+    100% {transform:rotate(0deg);}
 }
