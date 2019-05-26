@@ -103,7 +103,7 @@ console.log(cpuCount + " is correct")
 
 
 //ON CLICK EVENT LISTENERS
-var audio = $("#sfx")[0];
+var audio = $("#blop")[0];
 $(".button").on("click", function() {
     audio.play();
 });
@@ -133,15 +133,17 @@ $(".button").on("click", function() {
     if (playerCount === cpuCount) {
         resetGame();
         wins++;
-        $("#wins").text(wins)
+        $("#wins").text(wins);
+        var audio = $("#winner")[0]; //audio trigger for win
+            audio.play();
     } else if (playerCount > cpuCount)  {
         resetGame();
         losses++;
         $("#losses").text(losses)
+        var audio = $("#loser")[0]; //audio trigger for lose
+            audio.play();
         }
     })
 });
-
-//TO-DO: Check and fix reset game functionality. (Reprint correct values, mostly)
 
 
