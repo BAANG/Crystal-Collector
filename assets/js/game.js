@@ -102,6 +102,12 @@ $("#customerText").text(customerText[i]) //prints the customertext prompt with e
 console.log(cpuCount + " is correct")
 
 
+//ON CLICK EVENT LISTENERS
+var audio = $("#sfx")[0];
+$(".button").on("click", function() {
+    audio.play();
+});
+
 $("#drink1").on("click", function(){
     playerCount += 1
     $("#playerCount").text("$" + playerCount)
