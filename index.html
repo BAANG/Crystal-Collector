@@ -37,7 +37,7 @@
                   <div class="col-9">
                   <i><h1 class="lead" id="customerText"></h1></i>
                   <small>They pay you:</small>
-                  <h3 class="display-4" id="cpuCount"></h3>
+                  <h3 class="display-4" id="cpuCount" data-toggle="tooltip" data-placement="left" title="Click on the bottles below, to match this number"></h3>
                   </div>
                   <div class="col-1">
                   <small>Wins:</small>
@@ -57,26 +57,30 @@
         <div class="container">
           <div class="row">
             <div class="col-2 buttonBar">
-              <img src="assets/images/drink1.png" id="drink1" class="button" value="1"/>
+              <img src="assets/images/drink1.png" id="drink1" class="button" value="1" data-toggle="tooltip" data-placement="bottom" title="Water"/>
             </div>
             <div class="col-2 buttonBar">
-              <img src="assets/images/drink2.png" id="drink2" class="button" value=""/>
+              <img src="assets/images/drink2.png" id="drink2" class="button" value="" data-toggle="tooltip" data-placement="bottom" title="Tequila"/>
             </div>
             <div class="col-2 buttonBar">
-              <img src="assets/images/drink3.png" id="drink3" class="button" value=""/>
+              <img src="assets/images/drink3.png" id="drink3" class="button" value="" data-toggle="tooltip" data-placement="bottom" title="Whiskey"/>
             </div>
             <div class="col-2 buttonBar">
-              <img src="assets/images/drink4.png" id="drink4" class="button" value=""/>
+              <img src="assets/images/drink4.png" id="drink4" class="button" value="" data-toggle="tooltip" data-placement="bottom" title="Vodka"/>
             </div>
             <div class="col-2 buttonBar">
-              <img src="assets/images/drink5.png" id="drink5" class="button" value=""/>
+              <img src="assets/images/drink5.png" id="drink5" class="button" value="" data-toggle="tooltip" data-placement="bottom" title="Vermouth"/>
             </div>
             <div class="col-2">
               <small>This drink is worth:</small>
               <hr>
-              <h3 class="display-4" id="playerCount">$0</h3>
+              <h3 class="display-4" id="playerCount" data-toggle="tooltip" data-placement="bottom" title="This is your current point count. Match the target number above!">$0</h3>
             </div>
           </div>
+        </div>
+
+        <div id="hint-bar">
+          <i><small>Hint: </small><small id="hints"></small></i>
         </div>
 
 

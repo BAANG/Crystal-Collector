@@ -1,3 +1,7 @@
+i {
+    font-style: italic; 
+}
+
 .button {
     position: absolute;
     bottom: 0px;
@@ -21,6 +25,14 @@
 .buttonBar {
     position: relative;
     top: 40px;
+}
+
+#hint-bar {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+    background-color: #E9ECEF;
 }
 
 audio {

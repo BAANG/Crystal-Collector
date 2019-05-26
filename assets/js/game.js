@@ -5,14 +5,14 @@ var wins = 0;
 var losses = 0;
 var playerCount = 0; // variable for tracking player's current count
 var cpuCount = (Math.floor(Math.random() * 51 + 20)); // variable for tracking cpu's random number (20-70) | also sets the first count when starting game.
-    // console.log(cpuCount + " is the cpuCount")
+// console.log(cpuCount + " is the cpuCount")
 
 var rollCount = function (){ //rerolls cpuCount value
     cpuCount = (Math.floor(Math.random() * 51 + 20)); // variable for tracking cpu's random number (20-70)
     $("#cpuCount").text("$" + cpuCount)
     $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
 }
-    
+
 var drink1 = 1; // one drink is always valued at 1
 // console.log(drink1 + " is always 1");
 var drink2
@@ -20,6 +20,26 @@ var drink3
 var drink4
 var drink5
 var drinkArray = [drink2, drink3, drink4, drink5]; // array that stores the values of each of the four drinks
+var h = 0;
+var hintArray = [
+    "The leftmost bottle is always worth $1",
+    "The value of your bottles are will reroll after every round",
+    "Thanks for playing!"
+]
+
+$(function () { //enable bootstrap tooltips
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
+var shuffleHints = function(){
+    if (h > hintArray.length) {
+        h = 0;
+        $("#hints").html(hintArray[h])
+    } else {
+        h++;
+        $("#hints").html(hintArray[h]);
+    }
+}
 
 
 
@@ -86,7 +106,8 @@ resetGame = function() { //game reset function...
     i = (Math.floor(Math.random() * (customerText.length))); //chooses random customer text
     rollCount(); //chooses random target number & prints new count
     rollDrinks();
-    $("#playerCount").text("$0")
+    $("#playerCount").text("$0");
+    shuffleHints();
 
     console.log(cpuCount)
 
@@ -100,6 +121,7 @@ rollDrinks();
 $("#cpuCount").text("$" + cpuCount)
 $("#customerText").text(customerText[i]) //prints the customertext prompt with embedded random number
 console.log(cpuCount + " is correct")
+$("#hints").html(hintArray[h]);
 
 
 //ON CLICK EVENT LISTENERS
